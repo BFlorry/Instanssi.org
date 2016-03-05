@@ -7,15 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 
-    <script type="text/javascript" src="{% static 'screenshow/js/jmpress.js' %}"></script>
-    
-    <script type="text/javascript" src="{% static 'screenshow/js/settings.js' %}"></script>
-    <script type="text/javascript" src="{% static 'screenshow/js/mods/clock.js' %}"></script>
-    <script type="text/javascript" src="{% static 'screenshow/js/mods/events.js' %}"></script>
-    <script type="text/javascript" src="{% static 'screenshow/js/mods/front.js' %}"></script>
-    <script type="text/javascript" src="{% static 'screenshow/js/mods/irc.js' %}"></script>
-    <script type="text/javascript" src="{% static 'screenshow/js/mods/messages.js' %}"></script>
-    <script type="text/javascript" src="{% static 'screenshow/js/mods/playing.js' %}"></script>
+    <script src="{% static 'screenshow/js/jmpress.js' %}"></script>
+
+    <script src="{% static 'screenshow/js/settings.js' %}"></script>
+    <script src="{% static 'screenshow/js/mods/clock.js' %}"></script>
+    <script src="{% static 'screenshow/js/mods/events.js' %}"></script>
+    <script src="{% static 'screenshow/js/mods/front.js' %}"></script>
+    <script src="{% static 'screenshow/js/mods/irc.js' %}"></script>
+    <script src="{% static 'screenshow/js/mods/messages.js' %}"></script>
+    <script src="{% static 'screenshow/js/mods/playing.js' %}"></script>
+    <script src="{% static 'screenshow/js/screenshow_effects.js' %}"></script>
+
+    <script>
+    var screenshowEffects;
+    $(function() {
+        screenshowEffects = ScreenshowEffects({
+            canvasNear: "glcanvasNear",
+            canvasFar: "glcanvasFar",
+            resourcePath: "{% static 'screenshow/js/res/' %}"
+        });
+    });
+    </script>
+    <script src="{% static 'screenshow/js/math.js' %}"></script>
+    <script src="{% static 'screenshow/js/glhelpers.js' %}"></script>
+    <script src="{% static 'screenshow/js/webgl.js' %}"></script>
+    <script src="{% static 'screenshow/js/demo_tracer.js' %}"></script>
     
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
     <link rel="stylesheet" type="text/css" href="{% static 'libs/css/reset.css' %}" />
