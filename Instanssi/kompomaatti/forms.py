@@ -91,7 +91,7 @@ class VoteCodeAssocForm(forms.Form):
                 u'Syötä äänestyskoodi',
                 'code',
                 ButtonHolder(
-                    Submit('submit-vcassoc', 'Tallenna')
+                    Submit('submit-vcassoc', _('Save'))
                 )
             )
         )
@@ -120,7 +120,7 @@ class ParticipationForm(forms.ModelForm):
                 u'',
                 'participant_name',
                 ButtonHolder(
-                    Submit('submit', u'Osallistu')
+                    Submit('submit', _('Participate'))
                 )
             )
         )
@@ -158,7 +158,7 @@ class EntryForm(forms.ModelForm):
             fs.fields.append('imagefile_original')  
             
         # Add submitbutton
-        fs.fields.append(ButtonHolder(Submit('submit', u'Tallenna')))
+        fs.fields.append(ButtonHolder(Submit('submit', _('Save'))))
         
         # Add fieldset to layout
         self.helper.layout = Layout(fs)
@@ -268,7 +268,7 @@ class EntryForm(forms.ModelForm):
     def validate(self):
         # Make sure compo is active
         if not self.compo.active:
-            raise ValidationError(u'Kompo ei ole aktiivinen.')
+            raise ValidationError(_('Compo is not active'))
 
     def save(self, commit=True):
         instance = super(EntryForm, self).save(commit=False)
