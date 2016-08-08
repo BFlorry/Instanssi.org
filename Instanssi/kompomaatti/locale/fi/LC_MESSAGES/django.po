@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-09 00:14+0300\n"
+"POT-Creation-Date: 2016-08-09 00:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,6 +109,7 @@ msgid "User who made the request"
 msgstr "Pyynnön tehnyt käyttäjä"
 
 #: .\models.py:53 .\models.py:150 .\models.py:273 .\models.py:457
+#: .\templates\kompomaatti\competition_details.html:25
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -426,6 +427,7 @@ msgid "URL to the Youtube video of the entry"
 msgstr "URL teoksen Youtube-videoon"
 
 #: .\models.py:308 .\models.py:514
+#: .\templates\kompomaatti\competition_details.html:38
 msgid "Disqualified"
 msgstr "Diskattu"
 
@@ -502,11 +504,11 @@ msgstr "Matalin tulos ensin"
 msgid "Sports competition name"
 msgstr "Urheilukilpailun nimi"
 
-#: .\models.py:459
+#: .\models.py:459 .\templates\kompomaatti\competition_details.html:29
 msgid "Participation deadline time"
 msgstr "Osallistumisen takaraja"
 
-#: .\models.py:461
+#: .\models.py:461 .\templates\kompomaatti\competition_details.html:30
 msgid "Competition start time"
 msgstr "Kilpailun alkuaika"
 
@@ -585,3 +587,31 @@ msgstr "Osallistuminen"
 #: .\models.py:546
 msgid "participations"
 msgstr "Osallistumiset"
+
+#: .\templates\kompomaatti\competition_details.html:18
+msgid "Competitions"
+msgstr "Kilpailut"
+
+#: .\templates\kompomaatti\competition_details.html:34
+msgid "Results"
+msgstr "Tulokset"
+
+#: .\templates\kompomaatti\competition_details.html:46
+msgid "Participating"
+msgstr "Osallistuminen"
+
+#: .\templates\kompomaatti\competition_details.html:49
+#, python-format
+msgid ""
+"You are signed up as <strong>%(participation.participant_name)s</strong>"
+msgstr ""
+"Olet ilmoittautunut nimimerkillä <strong>%(participation.participant_name)s</"
+"strong>"
+
+#: .\templates\kompomaatti\competition_details.html:52
+msgid "Remove participation"
+msgstr "Poista ilmoittautuminen"
+
+#: .\templates\kompomaatti\competition_details.html:55
+msgid "You have not participated yet"
+msgstr "Et ole vielä ilmoittautunut mukaan"
