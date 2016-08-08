@@ -4,6 +4,7 @@ import os.path
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 from datetime import datetime
@@ -13,65 +14,50 @@ from Instanssi.kompomaatti.misc import entrysort
 
 class Profile(models.Model):
     user = models.ForeignKey(
-        User,
-        verbose_name=u'Käyttäjä')
-    otherinfo = models.TextField(
-        u'Muut yhteystiedot',
-        help_text=u'Muita yhteystietoja, mm. IRC-tunnus (verkon kera), jne.')
+        User, verbose_name=_('User'))
+    otherinfo = models.TextField(_(
+        'Other contact information'), help_text=_('Other contact information, such as IRC nick.'))
 
     def __unicode__(self):
         return self.user.username
 
     class Meta:
-        verbose_name = u"profiili"
-        verbose_name_plural = u"profiilit"
+        verbose_name = _('profile')
+        verbose_name_plural = _('profiles')
 
 
 class Event(models.Model):
     name = models.CharField(
-        u'Nimi',
-        max_length=64,
-        help_text=u"Tapahtuman nimi",
-        unique=True)
+        _('Name'), max_length=64, help_text=_('Event name'), unique=True)
     date = models.DateField(
-        u'Päivämäärä',
-        help_text=u"Tapahtuman päivämäärä (alku)")
+        _('Date'), help_text=_('Event starting date'))
     archived = models.BooleanField(
-        u'Arkistoitu',
-        help_text=u"Saa näyttää arkistossa",
-        default=False)
+        _('Archived'), help_text=_('Event is visible in archive'), default=False)
     mainurl = models.URLField(
-        u'Tapahtuman pääsivu', help_text=u'URL Tapahtuman pääsivustolle', blank=True)
+        _('Main page url'), help_text=_('URL pointing to the event frontpage'), blank=True)
 
     def __unicode__(self):
         return u'[{}] {}'.format(self.pk, self.name)
 
     class Meta:
-        verbose_name = u"tapahtuma"
-        verbose_name_plural = u"tapahtumat"
+        verbose_name = _('event')
+        verbose_name_plural = _('events')
 
 
 class VoteCodeRequest(models.Model):
     event = models.ForeignKey(
-        Event,
-        verbose_name=u'Tapahtuma',
-        help_text=u'Tapahtuma, johon äänestysoikeutta pyydetään',
-        null=True)
+        Event, verbose_name=_('Event'), help_text=_('Event to request voting rights for'), null=True)
     user = models.OneToOneField(
-        User,
-        unique=True,
-        verbose_name=u'Käyttäjä',
-        help_text=u'Pyynnön esittänyt käyttäjä')
+        User, unique=True, verbose_name=_('User'), help_text=_('User who made the request'))
     text = models.TextField(
-        u'Kuvaus',
-        help_text=u'Lyhyt aneluteksti admineille :)')
+        _('Description'), help_text=_('Short begging text for the admins'))
 
     def __unicode__(self):
         return self.user.username
 
     class Meta:
-        verbose_name = u"äänestyskoodipyyntö"
-        verbose_name_plural = u"äänestyskoodipyynnöt"
+        verbose_name = _('vote code request')
+        verbose_name_plural = _('vote code requests')
 
 
 class TicketVoteCode(models.Model):

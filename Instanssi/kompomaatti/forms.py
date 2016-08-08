@@ -3,6 +3,7 @@
 import os
 from datetime import datetime
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Fieldset, ButtonHolder
@@ -17,10 +18,10 @@ class VoteCodeRequestForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
-                u'Pyydä äänestysoikeutta',
+                _('Request voting rights'),
                 'text',
                 ButtonHolder(
-                    Submit('submit-vcreq', u'Pyydä äänestysoikeutta')
+                    Submit('submit-vcreq', _('Request voting rights'))
                 )
             )
         )
