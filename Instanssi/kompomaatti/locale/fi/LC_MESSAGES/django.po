@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-08 21:37+0300\n"
+"POT-Creation-Date: 2016-08-08 21:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Request voting rights"
 msgstr "Pyydä äänestysoikeudet"
 
-#: .\models.py:17 .\models.py:51
+#: .\models.py:17 .\models.py:51 .\models.py:72 .\models.py:112
 msgid "User"
 msgstr "Käyttäjä"
 
@@ -82,7 +82,7 @@ msgstr "tapahtuma"
 msgid "events"
 msgstr "tapahtumaat"
 
-#: .\models.py:49
+#: .\models.py:49 .\models.py:66 .\models.py:101
 msgid "Event"
 msgstr "Tapahtuma"
 
@@ -109,3 +109,51 @@ msgstr "äänestyskoodipyyntö"
 #: .\models.py:60
 msgid "vote code requests"
 msgstr "äänestyskoodipyynnöt"
+
+#: .\models.py:67 .\models.py:102
+msgid "Event with which the vote key is associated with"
+msgstr "Tapahtuma, johon äänestysavain on assosioitu"
+
+#: .\models.py:73 .\models.py:113
+msgid "User with whom the vote key is associated with"
+msgstr "Käyttäjä jolle avain on assosioitu"
+
+#: .\models.py:78
+msgid "Ticket"
+msgstr "Lippu"
+
+#: .\models.py:79
+msgid "Ticket key which is used as the voting key"
+msgstr "Lippu jonka avainta käytetään äänestysavaimena"
+
+#: .\models.py:84 .\models.py:117
+msgid "Timestamp"
+msgstr "Aikaleima"
+
+#: .\models.py:85 .\models.py:118
+msgid "When the user was associated with the key"
+msgstr "Aika jolloin avain assosioitiin käyttäjälle."
+
+#: .\models.py:93
+msgid "ticket vote code"
+msgstr "lippuäänestusavain"
+
+#: .\models.py:94
+msgid "ticket cote codes"
+msgstr "lippuäänestusavaimet"
+
+#: .\models.py:106
+msgid "Key"
+msgstr "Avain"
+
+#: .\models.py:107
+msgid "Vote key"
+msgstr "Äänestysavain"
+
+#: .\models.py:129
+msgid "vote code"
+msgstr "äänestyskoodi"
+
+#: .\models.py:130
+msgid "vote codes"
+msgstr "äänestyskoodit"

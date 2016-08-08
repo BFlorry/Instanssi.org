@@ -63,26 +63,26 @@ class VoteCodeRequest(models.Model):
 class TicketVoteCode(models.Model):
     event = models.ForeignKey(
         Event,
-        verbose_name=u'Tapahtuma',
-        help_text=u'Tapahtuma, johon äänestysavain on assosioitu',
+        verbose_name=_('Event'),
+        help_text=_('Event with which the vote key is associated with'),
         blank=True,
         null=True)
     associated_to = models.ForeignKey(
         User,
-        verbose_name=u'Käyttäjä',
-        help_text=u"Käyttäjä jolle avain on assosioitu",
+        verbose_name=_('User'),
+        help_text=_('User with whom the vote key is associated with'),
         blank=True,
         null=True)
     ticket = models.ForeignKey(
         'store.TransactionItem',  # String to avoid circular dependency
-        verbose_name=u'Lipputuote',
-        help_text=u'Lipputuote jonka avainta käytetään äänestysavaimena',
+        verbose_name=_('Ticket'),
+        help_text=_('Ticket key which is used as the voting key'),
         on_delete=models.SET_NULL,
         blank=True,
         null=True)
     time = models.DateTimeField(
-        u'Aikaleima',
-        help_text=u"Aika jolloin avain assosioitiin käyttäjälle.",
+        _('Timestamp'),
+        help_text=_('When the user was associated with the key'),
         blank=True,
         null=True)
 
@@ -90,32 +90,32 @@ class TicketVoteCode(models.Model):
         return u'{}: {}'.format(self.ticket.key, self.associated_to.username)
 
     class Meta:
-        verbose_name = u"lippuäänestusavain"
-        verbose_name_plural = u"lippuäänestysavaimet"
+        verbose_name = _('ticket vote code')
+        verbose_name_plural = _('ticket cote codes')
         unique_together = (("event", "ticket"), ("event", "associated_to"))
 
 
 class VoteCode(models.Model):
     event = models.ForeignKey(
         Event,
-        verbose_name=u'Tapahtuma',
-        help_text=u'Tapahtuma, johon äänestysavain on assosioitu',
+        verbose_name=_('Event'),
+        help_text=_('Event with which the vote key is associated with'),
         blank=True,
         null=True)
     key = models.CharField(
-        u'Avain',
-        help_text=u"Äänestysavain.",
+        _('Key'),
+        help_text=_('Vote key'),
         max_length=64,
         unique=True)
     associated_to = models.ForeignKey(
         User,
-        verbose_name=u'Käyttäjä',
-        help_text=u"Käyttäjä jolle avain on assosioitu",
+        verbose_name=_('User'),
+        help_text=_('User with whom the vote key is associated with'),
         blank=True,
         null=True)
     time = models.DateTimeField(
-        u'Aikaleima',
-        help_text=u"Aika jolloin avain assosioitiin käyttäjälle.",
+        _('Timestamp'),
+        help_text=_('When the user was associated with the key'),
         blank=True,
         null=True)
 
@@ -126,8 +126,8 @@ class VoteCode(models.Model):
             return unicode(self.key)
 
     class Meta:
-        verbose_name = u"äänestysavain"
-        verbose_name_plural = u"äänestysavaimet"
+        verbose_name = _('vote code')
+        verbose_name_plural = _('vote codes')
         unique_together = (("event", "key"), ("event", "associated_to"))
 
 
