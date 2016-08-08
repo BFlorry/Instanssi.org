@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-08 21:57+0300\n"
+"POT-Creation-Date: 2016-08-09 00:08+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,8 @@ msgstr ""
 msgid "Request voting rights"
 msgstr "Pyydä äänestysoikeudet"
 
-#: .\models.py:17 .\models.py:51 .\models.py:72 .\models.py:112
+#: .\models.py:17 .\models.py:51 .\models.py:72 .\models.py:112 .\models.py:263
+#: .\models.py:429 .\models.py:502
 msgid "User"
 msgstr "Käyttäjä"
 
@@ -42,7 +43,7 @@ msgstr "profiili"
 msgid "profiles"
 msgstr "profiilit"
 
-#: .\models.py:31
+#: .\models.py:31 .\models.py:149 .\models.py:269 .\models.py:453
 msgid "Name"
 msgstr "Nimi"
 
@@ -82,7 +83,8 @@ msgstr "tapahtuma"
 msgid "events"
 msgstr "tapahtumaat"
 
-#: .\models.py:49 .\models.py:66 .\models.py:101
+#: .\models.py:49 .\models.py:66 .\models.py:101 .\models.py:148
+#: .\models.py:451
 msgid "Event"
 msgstr "Tapahtuma"
 
@@ -94,7 +96,7 @@ msgstr "Tapahtuma jolle pyydetään äänestysoikeutta"
 msgid "User who made the request"
 msgstr "Pyynnön tehnyt käyttäjä"
 
-#: .\models.py:53
+#: .\models.py:53 .\models.py:150 .\models.py:273 .\models.py:457
 msgid "Description"
 msgstr "Kuvaus"
 
@@ -132,7 +134,7 @@ msgstr "Aikaleima"
 
 #: .\models.py:85 .\models.py:118
 msgid "When the user was associated with the key"
-msgstr "Aika jolloin avain assosioitiin käyttäjälle."
+msgstr "Aika jolloin avain assosioitiin käyttäjälle"
 
 #: .\models.py:93
 msgid "ticket vote code"
@@ -157,3 +159,417 @@ msgstr "äänestyskoodi"
 #: .\models.py:130
 msgid "vote codes"
 msgstr "äänestyskoodit"
+
+#: .\models.py:136
+msgid "Nothing"
+msgstr "Ei mitään"
+
+#: .\models.py:137
+msgid "Youtube first, then image"
+msgstr "Ensin Youtube, sitten kuva"
+
+#: .\models.py:138
+msgid "Image only"
+msgstr "Vain kuva"
+
+#: .\models.py:139
+msgid "(deprecated)"
+msgstr "(ei käytössä)"
+
+#: .\models.py:142
+msgid "Require a separate thumbnail"
+msgstr "Vaadi erillinen pikkukuva"
+
+#: .\models.py:143
+msgid "Use the entryfile as a thumbnail (only works for jpg/png images)"
+msgstr "Käytä pikkukuvana teoksen tiedostoa (Toimii vain png/jpg-tiedostoille)"
+
+#: .\models.py:144
+msgid "Allow thumbnail (not required)"
+msgstr "Salli pikkukuva (ei vaadittu)"
+
+#: .\models.py:145
+msgid "Don't allow thumbnail"
+msgstr "Älä salli pikkukuvaa"
+
+#: .\models.py:152
+msgid "Deadline for adding entries"
+msgstr "Deadline entryjen lisäyksille"
+
+#: .\models.py:153
+msgid ""
+"After this, new entries cannot be added. Modifying old entries still works."
+msgstr ""
+"Tämän jälkeen kompoon ei voi enää lähettää uusia entryjä. Muokkaus toimii "
+"vielä"
+
+#: .\models.py:155
+msgid "Deadline for editing entries"
+msgstr "Deadline entryjen muokkauksille"
+
+#: .\models.py:156
+msgid "After this, added entries can no longer be edited"
+msgstr ""
+"Tämän jälkeen entryjen tiedostoja tai muita tietoja ei voi enää muokata"
+
+#: .\models.py:158
+msgid "Starting time"
+msgstr "Alkamisaika"
+
+#: .\models.py:159
+msgid "Compo starting time (for the event calendar)"
+msgstr "Kompon alkamisaika (tapahtumakalenteria varten)"
+
+#: .\models.py:161
+msgid "Voting start time"
+msgstr "Äänestyksen alkamisaika"
+
+#: .\models.py:162
+msgid "Starting time for voting entries"
+msgstr "Alkamisaika entryjen äänestykselle"
+
+#: .\models.py:164
+msgid "Voting end time"
+msgstr "Äänestyksen päättymisaika"
+
+#: .\models.py:165
+msgid "Ending time for voting entries"
+msgstr "Päättymisaika entryjen äänestykselle"
+
+#: .\models.py:167
+msgid "Size limit for entries"
+msgstr "Kokoraja entryille"
+
+#: .\models.py:168
+msgid "Size limit for entry files (in bytes)"
+msgstr "Kokoraja entrytiedostoille (tavua)"
+
+#: .\models.py:171
+msgid "Size limit for sources"
+msgstr "Kokoraja lähdekoodeille"
+
+#: .\models.py:172
+msgid "Size limit for source files (in bytes)"
+msgstr "Kokoraja lähdekooditiedostoille (tavua)"
+
+#: .\models.py:175
+msgid "Accepted entry file extensions"
+msgstr "Sallitut tiedostopäätteet entryille"
+
+#: .\models.py:177
+msgid ""
+"Accepted file extensions for the entry file, separated by vertical bar. Eg. "
+"\"png|jpg\""
+msgstr ""
+"Entrypaketille sallitut tiedostopäätteet pystyviivalla eroteltuna, esim. "
+"\"png|jpg\""
+
+#: .\models.py:180
+msgid "Accepted source file extensions"
+msgstr "Sallitut tiedostopäätteet lähdekoodeille"
+
+#: .\models.py:182
+msgid ""
+"Accepted file extensions for the source file, separated by vertical bar. Eg. "
+"\"png|jpg\""
+msgstr ""
+"Lähdekoodipaketille sallitut tiedostopäätteet pystyviivalla eroteltuna, "
+"esim. \"png|jpg\""
+
+#: .\models.py:185
+msgid "Accepted image file extensions"
+msgstr "Sallitut kuvatiedoston päätteet"
+
+#: .\models.py:187
+msgid ""
+"Accepted file extensions for the image file, separated by vertical bar. Eg. "
+"\"png|jpg\""
+msgstr ""
+"Entryn pikkukuvalle sallitut tiedostopäätteet pystyviivalla eroteltuna, "
+"esim. \"png|jpg\""
+
+#: .\models.py:190 .\models.py:480
+msgid "Active"
+msgstr "Aktiivinen"
+
+#: .\models.py:191
+msgid "If the compo is active, it will be visible in kompomaatti"
+msgstr "Mikäli kompo on aktiivinen, se näytetään kompomaatissa kaikille"
+
+#: .\models.py:194 .\models.py:476
+msgid "Show results"
+msgstr "Näytä tulokset"
+
+#: .\models.py:195
+msgid "Show voting results for this compo"
+msgstr "Näytä kompon äänestystulokset"
+
+#: .\models.py:198
+msgid "Entry preview style"
+msgstr "Entryn esikatselun tyyli"
+
+#: .\models.py:201
+msgid "What kind of entry preview is shown in entry information"
+msgstr "Millainen esikatselunäkymä näytetään entryn tiedoissa"
+
+#: .\models.py:203 .\models.py:484
+msgid "Hide from archive"
+msgstr "Piilota arkistosta"
+
+#: .\models.py:204
+msgid ""
+"Hide compo voting results from the archive (This overrides event settings)"
+msgstr ""
+"Piilottaa kompon tulokset arkistosta (ohittaa tapahtuman tiedoissa valitun "
+"asetuksen)"
+
+#: .\models.py:207
+msgid "Hide from event page"
+msgstr "Piilota tapahtuman etusivulta"
+
+#: .\models.py:208
+msgid ""
+"Hide compo name and description from the event front page (eg. if compo is "
+"still a draft)"
+msgstr ""
+"Piilota kompon nimi ja kuvaus tapahtuman etusivulta (Mikäli kompo on vielä "
+"esim. suunnitteluasteella)"
+
+#: .\models.py:211
+msgid "Is votable"
+msgstr "Äänestettävissä"
+
+#: .\models.py:212
+msgid "Entries can be voted on (disable for eg. robocode)"
+msgstr "Teosta voi ylipäätään äänestää (Pois esim. robocodelle)"
+
+#: .\models.py:215
+msgid "Thumbnail settings"
+msgstr "Pikkukuvan asetukset"
+
+#: .\models.py:223
+msgid "compo"
+msgstr "kompo"
+
+#: .\models.py:224
+msgid "compos"
+msgstr "kompot"
+
+#: .\models.py:264
+msgid "Owner of the entry"
+msgstr "Teoksen omistaja"
+
+#: .\models.py:267 .\models.py:430
+msgid "Compo"
+msgstr "Kompo"
+
+#: .\models.py:271
+msgid "Entry name"
+msgstr "Teoksen nimi"
+
+#: .\models.py:274
+msgid "Eg. description of techniques and/or tools used."
+msgstr "Kuvaus; esim. käytetyt työkalut ja/tai tekniikat"
+
+#: .\models.py:276
+msgid "Creator"
+msgstr "Tekijä"
+
+#: .\models.py:278
+msgid "Name of the demogroup or individual"
+msgstr "Tekijän tai tekijäryhmän nimi"
+
+#: .\models.py:280
+msgid "Entry file"
+msgstr "Tuotostiedosto"
+
+#: .\models.py:282
+msgid "Should contain everything required to run/show the entry"
+msgstr ""
+"Tämän pitää sisältää kaikki mitä tarvitaan tuotoksen näyttämiseen/"
+"suorittamiseen"
+
+#: .\models.py:284
+msgid "Source file"
+msgstr "Lähdekooditiedosto"
+
+#: .\models.py:286
+msgid "Optional source code package"
+msgstr "Vapaaehtoinen tuotoksen lähdekoodit sisältävä paketti"
+
+#: .\models.py:289
+msgid "Image"
+msgstr "Kuva"
+
+#: .\models.py:291
+msgid "Image of the entry (Recommended but not required)"
+msgstr "Vapaaehtoinen edustava kuva teokselle"
+
+#: .\models.py:304
+msgid "Youtube URL"
+msgstr "Youtube URL"
+
+#: .\models.py:305
+msgid "URL to the Youtube video of the entry"
+msgstr "URL teoksen Youtube-videoon"
+
+#: .\models.py:308 .\models.py:514
+msgid "Disqualified"
+msgstr "Diskattu"
+
+#: .\models.py:309
+msgid ""
+"Entry is disqualified because of rulebreaking or technical problems(MUST be "
+"set before voting starts!)"
+msgstr ""
+"Entry on diskattu sääntörikon tai teknisten ongelmien takia (ASETETTAVA "
+"ENNEN ÄÄNESTYKSEN ALKUA!)"
+
+#: .\models.py:313 .\models.py:518
+msgid "Disqualification reason"
+msgstr "Diskauksen syy"
+
+#: .\models.py:316 .\models.py:509
+msgid "Score"
+msgstr "Pisteet"
+
+#: .\models.py:317
+msgid ""
+"Score for the archived entry. If this is not set, the score is automatically "
+"calculated from votes."
+msgstr ""
+"Entryn saamat pisteet. Mikäli tätä ei ole asetettu, lasketaan pisteet "
+"suoraan annetuista äänistä."
+
+#: .\models.py:321 .\models.py:432
+msgid "Rank"
+msgstr "Sijoitus"
+
+#: .\models.py:322
+msgid ""
+"Rank for the archived entry. If this is not set, the rank is automatically "
+"calculated from scores."
+msgstr ""
+"Entryn sijoitus. Mikäli tätä ei ole asetettu, lasketaan sijoitus suoraan "
+"entryjen pisteistä."
+
+#: .\models.py:330
+msgid "entry"
+msgstr "tuotos"
+
+#: .\models.py:331
+msgid "entries"
+msgstr "tuotokset"
+
+#: .\models.py:431
+msgid "Entry"
+msgstr "Tuotos"
+
+#: .\models.py:435
+#, python-brace-format
+msgid "{entry} by {username} as {rank}"
+msgstr "Tekijän {username} teos {entry} sijoitus on {rank}"
+
+#: .\models.py:439
+msgid "vote"
+msgstr "ääni"
+
+#: .\models.py:440
+msgid "votes"
+msgstr "äänet"
+
+#: .\models.py:445
+msgid "Highest result first"
+msgstr "Korkein tulos ensin"
+
+#: .\models.py:446
+msgid "Lowest result first"
+msgstr "Matalin tulos ensin"
+
+#: .\models.py:455
+msgid "Sports competition name"
+msgstr "Urheilukilpailun nimi"
+
+#: .\models.py:459
+msgid "Participation deadline time"
+msgstr "Osallistumisen takaraja"
+
+#: .\models.py:461
+msgid "Competition start time"
+msgstr "Kilpailun alkuaika"
+
+#: .\models.py:463
+msgid "Competition ending time"
+msgstr "Kilpailun päättymisaika"
+
+#: .\models.py:467
+msgid "Score type"
+msgstr "Pisteiden tyyppi"
+
+#: .\models.py:469
+msgid "Score type, eg. \"km\", \"m\", \"sec\" etc."
+msgstr "Pisteiden tyyppi, esim. \"km\", \"m\", \"sek\" jne."
+
+#: .\models.py:471
+msgid "Score sorting"
+msgstr "Pisteiden järjestely"
+
+#: .\models.py:473
+msgid "Whether the winner be decided by highest or the lowest score"
+msgstr "Onko voittaja suurimman vai pienimmän pistemäärän saavuttanut"
+
+#: .\models.py:477
+msgid "Show competition results"
+msgstr "Näytä kilpailun tulokset"
+
+#: .\models.py:481
+msgid "If the competition is active, it will be visible in kompomaatti"
+msgstr "Mikäli kilpailu on aktiivinen, se näytetään kompomaatissa kaikille"
+
+#: .\models.py:485
+msgid ""
+"Hide competition results from the archive (This overrides event settings)"
+msgstr ""
+"Piilottaa kilpailun tulokset arkistosta (ohittaa tapahtuman tiedoissa "
+"valitun asetuksen)"
+
+#: .\models.py:492
+msgid "competition"
+msgstr "kilpailu"
+
+#: .\models.py:493
+msgid "competitions"
+msgstr "kilpailut"
+
+#: .\models.py:499
+msgid "Competition"
+msgstr "Kilpailu"
+
+#: .\models.py:504
+msgid "Participant nickname"
+msgstr "Osallistujan nimimerkki"
+
+#: .\models.py:505
+msgid "Nickname with which to participate"
+msgstr "Nimimerkki jolla osallistutaan"
+
+#: .\models.py:510
+msgid "Score achieved by participant"
+msgstr "Kilpailijan saavuttamat pisteet"
+
+#: .\models.py:515
+msgid "Participant is disqualified for some reason"
+msgstr "Kilpailija on diskattu syystä tai toisesta"
+
+#: .\models.py:541
+#, python-brace-format
+msgid "{competition}, {participant}: {score}"
+msgstr "{competition}, {participant}: {score}"
+
+#: .\models.py:545
+msgid "participation"
+msgstr "Osallistuminen"
+
+#: .\models.py:546
+msgid "participations"
+msgstr "Osallistumiset"
