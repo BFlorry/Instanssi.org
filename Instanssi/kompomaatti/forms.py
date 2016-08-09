@@ -34,9 +34,9 @@ class VoteCodeRequestForm(forms.ModelForm):
 class TicketVoteCodeAssocForm(forms.Form):
     code = forms.CharField(
         min_length=8,
-        label=u"Lippukoodi",
+        label=_('Ticket code'),
         widget=forms.TextInput(attrs={'id': 'ticketvotecode'}),
-        help_text=u"Syötä vähintään ensimmäiset kahdeksan (8) merkkiä lippukoodistasi tähän.")
+        help_text=_('Type in at least first eight (8) letters of your ticket code here'))
 
     def __init__(self, *args, **kwargs):
         # Init
@@ -48,10 +48,10 @@ class TicketVoteCodeAssocForm(forms.Form):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
-                u'Syötä lippukoodi',
+                _('Get voting rights with ticket code'),
                 'code',
                 ButtonHolder(
-                    Submit('submit-ticketvcassoc', u'Hae äänestysoikeus')
+                    Submit('submit-ticketvcassoc', _('Get voting rights'))
                 )
             )
         )
@@ -61,7 +61,7 @@ class TicketVoteCodeAssocForm(forms.Form):
         try:
             TransactionItem.objects.get(key__startswith=code, item__event=self.event)
         except TransactionItem.DoesNotExist:
-            raise ValidationError(u'Virheellinen koodi')
+            raise ValidationError(_('Erroneous code'))
         return code
 
     def save(self):
@@ -76,7 +76,7 @@ class TicketVoteCodeAssocForm(forms.Form):
 
 
 class VoteCodeAssocForm(forms.Form):
-    code = forms.CharField(max_length=8, label=u"Äänestyskoodi", help_text=u"Syötä saamasi äänestyskoodi tähän.")
+    code = forms.CharField(max_length=8, label=_('Vote code'), help_text=_('Insert your vote code here'))
     
     def __init__(self, *args, **kwargs):
         # Init
@@ -88,10 +88,10 @@ class VoteCodeAssocForm(forms.Form):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
-                u'Syötä äänestyskoodi',
+                _('Get voting rights with voting code'),
                 'code',
                 ButtonHolder(
-                    Submit('submit-vcassoc', _('Save'))
+                    Submit('submit-vcassoc', _('Get voting rights'))
                 )
             )
         )
@@ -101,7 +101,7 @@ class VoteCodeAssocForm(forms.Form):
         try:
             VoteCode.objects.get(event=self.event, key=code)
         except VoteCode.DoesNotExist:
-            raise ValidationError(u'Virheellinen koodi!')
+            raise ValidationError(_('Erroneous code'))
         return code
     
     def save(self):
@@ -117,7 +117,7 @@ class ParticipationForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             Fieldset(
-                u'',
+                _('Participate in competition'),
                 'participant_name',
                 ButtonHolder(
                     Submit('submit', _('Participate'))
@@ -170,13 +170,15 @@ class EntryForm(forms.ModelForm):
         if self.compo:
             # Description for entryfile
             self.fields['entryfile'].help_text = \
-                u"Tuotospaketti. Sallitut tiedostoformaatit: {}. Tiedoston maksimikoko on  {}.".format(
-                    self.compo.readable_entry_formats(), sizeformat(self.max_entry_size))
+                _('Entry package. Allowed file formats are {formats}. Maximum filesize is {filesize}.').format(
+                    formats=self.compo.readable_entry_formats(),
+                    filesize=sizeformat(self.max_entry_size))
 
             # Description for sourcefile
             self.fields['sourcefile'].help_text = \
-                u"Lähdekoodipaketti. Sallitut tiedostoformaatit: {}. Tiedoston maksimikoko on {}.".format(
-                    self.compo.readable_source_formats(), sizeformat(self.max_source_size))
+                _('Source package. Allowed file formats are {formats}. Maximum filesize is {filesize}.').format(
+                    formats=self.compo.readable_source_formats(),
+                    filesize=sizeformat(self.max_source_size))
         
         # If we want to show thumbnail field, set description etc.
         # Otherwise delete field from form.
@@ -189,9 +191,10 @@ class EntryForm(forms.ModelForm):
             
             # Description for imagefile
             self.fields['imagefile_original'].help_text = \
-                u"Kuva teokselle. Tätä käytetään mm. arkistossa ja kompomaatin äänestysvaiheessa. Sallitut " \
-                u"kuvaformaatit: {}. Tiedoston maksimikoko on {}.".format(self.compo.readable_image_formats(),
-                                                                          sizeformat(self.max_image_size))
+                _('Image for the entry. This is used in eg. archive and voting preview. '
+                  'Allowed image formats are {formats}. Maximum filesize is {filesize}.').format(
+                    formats=self.compo.readable_image_formats(),
+                    filesize=sizeformat(self.max_image_size))
         else:
             del self.fields['imagefile_original']
 
@@ -218,13 +221,13 @@ class EntryForm(forms.ModelForm):
         
         # Check entry file size
         if not self.field_size_ok("entryfile", self.max_entry_size):
-            raise ValidationError(u'Tiedoston koko on liian suuri! Suurin sallittu koko on {}'
-                                  .format(sizeformat(self.max_entry_size)))
+            raise ValidationError(_('File is too large! Maximum size is {filesize}')
+                                  .format(filesize=sizeformat(self.max_entry_size)))
         
         # Check entry file format
         if not self.field_format_ok("entryfile", self.compo.formats):
-            raise ValidationError(u'Tiedostotyyppi ei ole sallittu. Sallitut formaatit: {}'
-                                  .format(self.compo.readable_entry_formats()))
+            raise ValidationError(_('File format is not allowed! Allowed formats are {formats}')
+                                  .format(formats=self.compo.readable_entry_formats()))
         
         # All done.
         return self.cleaned_data['entryfile']
@@ -236,13 +239,13 @@ class EntryForm(forms.ModelForm):
         
         # Check source file size
         if not self.field_size_ok("sourcefile", self.max_source_size):
-            raise ValidationError(u'Tiedoston koko on liian suuri! Suurin sallittu koko on {}.'
-                                  .format(sizeformat(self.max_source_size)))
+            raise ValidationError(_('File is too large! Maximum size is {filesize}')
+                                  .format(filesize=sizeformat(self.max_source_size)))
         
         # Check source file format
         if not self.field_format_ok("sourcefile", self.compo.source_formats):
-            raise ValidationError(u'Tiedostotyyppi ei ole sallittu. Sallitut formaatit: {}.'
-                                  .format(self.compo.readable_source_formats()))
+            raise ValidationError(_('File format is not allowed! Allowed formats are {formats}')
+                                  .format(formats=self.compo.readable_source_formats()))
         
         # All done.
         return self.cleaned_data['sourcefile']
@@ -254,13 +257,13 @@ class EntryForm(forms.ModelForm):
         
         # Check image size
         if not self.field_size_ok("imagefile_original", self.max_image_size):
-            raise ValidationError(u'Tiedoston koko on liian suuri! Suurin sallittu koko on {}.'
-                                  .format(sizeformat(self.max_image_size)))
+            raise ValidationError(_('File is too large! Maximum size is {filesize}')
+                                  .format(filesize=sizeformat(self.max_image_size)))
         
         # Check image format
         if not self.field_format_ok("imagefile_original", self.compo.image_formats):
-            raise ValidationError(u'Tiedostotyyppi ei ole sallittu. Sallitut formaatit: {}.'
-                                  .format(self.compo.readable_image_formats()))
+            raise ValidationError(_('File format is not allowed! Allowed formats are {formats}')
+                                  .format(formats=self.compo.readable_image_formats()))
         
         # Done
         return self.cleaned_data['imagefile_original']

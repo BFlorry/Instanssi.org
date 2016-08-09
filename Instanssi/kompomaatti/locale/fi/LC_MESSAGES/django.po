@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-09 00:50+0300\n"
+"POT-Creation-Date: 2016-08-09 22:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,15 +22,90 @@ msgstr ""
 msgid "Request voting rights"
 msgstr "Pyydä äänestysoikeudet"
 
-#: .\forms.py:94 .\forms.py:161
-msgid "Save"
-msgstr "Tallenna"
+#: .\forms.py:37
+msgid "Ticket code"
+msgstr "Lippukoodi"
+
+#: .\forms.py:39
+msgid "Type in at least first eight (8) letters of your ticket code here"
+msgstr ""
+"Syötä vähintään ensimmäiset kahdeksan (8) merkkiä lippukoodistasi tähän"
+
+#: .\forms.py:51
+msgid "Get voting rights with ticket code"
+msgstr "Hanki äänestysoikeus lippukoodilla"
+
+#: .\forms.py:54 .\forms.py:94
+msgid "Get voting rights"
+msgstr "Hanki äänestysoikeus"
+
+#: .\forms.py:64 .\forms.py:104
+msgid "Erroneous code"
+msgstr "Virheellinen koodi"
+
+#: .\forms.py:79
+msgid "Vote code"
+msgstr "Äänestyskoodi"
+
+#: .\forms.py:79
+msgid "Insert your vote code here"
+msgstr "Syötä saamasi äänestyskoodi tähän"
+
+#: .\forms.py:91
+msgid "Get voting rights with voting code"
+msgstr "Hanki äänestysoikeus äänestyskoodilla"
+
+#: .\forms.py:120
+msgid "Participate in competition"
+msgstr "Osallistu kilpailuun"
 
 #: .\forms.py:123
 msgid "Participate"
 msgstr "Osallistu"
 
-#: .\forms.py:271
+#: .\forms.py:161
+msgid "Save"
+msgstr "Tallenna"
+
+#: .\forms.py:173
+#, python-brace-format
+msgid ""
+"Entry package. Allowed file formats are {formats}. Maximum filesize is "
+"{filesize}."
+msgstr ""
+"Tuotospaketti. Sallitut tiedostoformaatit ovat {formats}. Tiedoston "
+"maksimikoko on {filesize}."
+
+#: .\forms.py:179
+#, python-brace-format
+msgid ""
+"Source package. Allowed file formats are {formats}. Maximum filesize is "
+"{filesize}."
+msgstr ""
+"Lähdekoodipaketti. Sallitut tiedostoformaatit ovat {formats}. Tiedoston "
+"maksimikoko on {filesize}."
+
+#: .\forms.py:194
+#, python-brace-format
+msgid ""
+"Image for the entry. This is used in eg. archive and voting preview. Allowed "
+"image formats are {formats}. Maximum filesize is {filesize}."
+msgstr ""
+"Kuva tuotokselle. Tätä käytetään mm. arkistossa ja äänestyksen esikatseluna. "
+"Sallitut tiedostoformaatit ovat {formats}. Tiedoston maksimikoko on "
+"{filesize}."
+
+#: .\forms.py:224 .\forms.py:242 .\forms.py:260
+#, python-brace-format
+msgid "File is too large! Maximum size is {filesize}"
+msgstr "Tiedosto on liian suuri! Maksimi tiedostokoko on {filesize}"
+
+#: .\forms.py:229 .\forms.py:247 .\forms.py:265
+#, python-brace-format
+msgid "File format is not allowed! Allowed formats are {formats}"
+msgstr "Tiedostoformaatti ei ole sallittu! Sallitus formaatit ovat {formats}"
+
+#: .\forms.py:274
 msgid "Compo is not active"
 msgstr "Kompo ei ole aktiivinen"
 
