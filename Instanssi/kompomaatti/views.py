@@ -214,13 +214,13 @@ def compo_vote(request, event_id, compo_id):
         
         # Make sure we have right amount of entries (more than 0)
         if len(results) < 1:
-            return HttpResponse("On äänestettävä vähintään yhtä entryä.")
+            return HttpResponse(_('At least one entry has to be voted on'))
         
         # Make sure there are no id's twice
         _checked = []
         for id in results:
             if id in _checked:
-                return HttpResponse("Syötevirhe!")
+                return HttpResponse(_('Erroneous data'))
             else:
                 _checked.append(id)
 
@@ -230,7 +230,7 @@ def compo_vote(request, event_id, compo_id):
             _cids.append(entry.id)
         for result in results:
             if result not in _cids:
-                return HttpResponse("Syötevirhe!")
+                return HttpResponse(_('Erroneous data'))
         
         # Remove old votes by this user, on this compo
         if has_voted:
@@ -436,12 +436,12 @@ def validate_votecode_api(request, event_id, vote_code):
 
     # Make sure the key length is at least 8 chars before doing anything
     if len(vote_code) < 8:
-        return RestResponse(code=403, error_text=u'Lippuavain liian lyhyt!')
+        return RestResponse(code=403, error_text=_('Ticket code is too short'))
 
     # Check if key is already used, return error if it is
     try:
         TicketVoteCode.objects.get(event=event, ticket__key__startswith=vote_code)
-        return RestResponse(code=403, error_text=u'Lippuavain on jo käytössä!')
+        return RestResponse(code=403, error_text=_('Ticket code has already been used'))
     except TicketVoteCode.DoesNotExist:
         pass
 
@@ -449,7 +449,7 @@ def validate_votecode_api(request, event_id, vote_code):
     try:
         TransactionItem.objects.get(item__event=event, key__startswith=vote_code)
     except TransactionItem.DoesNotExist:
-        return RestResponse(code=403, error_text=u'Lippuavainta ei ole olemassa!')
+        return RestResponse(code=403, error_text=_('Ticket code does not exist'))
 
     # Everything done. Return default response with code 200 and no error text.
     return RestResponse({})
