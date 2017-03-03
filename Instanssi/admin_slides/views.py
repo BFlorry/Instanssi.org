@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from Instanssi.kompomaatti.models import Compo, Entry
 from Instanssi.kompomaatti.misc import entrysort
 from Instanssi.admin_base.misc.custom_render import admin_render
+from Instanssi.common.misc import get_url
 
 
 @staff_access_required
@@ -20,10 +21,10 @@ def index(request, sel_event_id):
 def slide_results(request, sel_event_id, compo_id):
     # Get the compo
     c = get_object_or_404(Compo, pk=compo_id)
-    
+
     # Get the entries
     s_entries = entrysort.sort_by_score(Entry.objects.filter(compo=c, disqualified=False))
-    
+
     i = 0
     f_entries = []
     for entry in reversed(s_entries[:3]):
@@ -73,7 +74,7 @@ def slide_results(request, sel_event_id, compo_id):
 def slide_entries(request, sel_event_id, compo_id):
     # Get the compo
     c = get_object_or_404(Compo, pk=compo_id)
-    
+
     # Get the entries
     s_entries = entrysort.sort_by_score(Entry.objects.filter(compo=c, disqualified=False))
 
@@ -105,6 +106,67 @@ def slide_entries(request, sel_event_id, compo_id):
         'compo': c,
         'last_y': - i * 2500,
         'last_rot_x': flip,
+        'selected_event_id': int(sel_event_id),
+    })
+
+
+@staff_access_required
+def slide_entries_with_images(request, sel_event_id, compo_id):
+    """Render entry slides with entry image after each title.
+    Useful for late night art compos."""
+
+    c = get_object_or_404(Compo, pk=compo_id)
+    s_entries = entrysort.sort_by_score(Entry.objects.filter(compo=c, disqualified=False))
+
+    i = 0
+    rot_x = 0
+    step = 1250
+
+    f_entries = []
+    for entry in s_entries:
+        f_entries.append({
+            'type': 'title',
+            'id': entry.id,
+            'creator': entry.creator,
+            'name': entry.name,
+            'x': 0,
+            'y': -i * step,
+            'z': 0,
+            'rot_y': 0,
+            'rot_x': rot_x,
+            'rot_z': 0,
+        })
+        i += 1
+        rot_x = (rot_x + 90) % 360
+
+        file_url = None
+        try:
+            file_url = get_url(entry.imagefile_original.url)
+        except:
+            pass
+
+        f_entries.append({
+            'type': 'image',
+            'id': 'img-%s' % str(entry.id),
+            'file_url': file_url,
+            # damn, the partynet is being slow. need to speed up development
+            # 'file_url': get_url(entry.imagefile_thumbnail.url),
+            'x': 0,
+            'y:': -i * step,
+            'z': 0,
+            'rot_y': 0,
+            'rot_x': rot_x,
+            'rot_z': 0,
+        })
+        i += 1
+        rot_x = (rot_x + 90) % 360
+
+    # Render
+    return admin_render(request, 'admin_slides/slide_entries_with_images.html', {
+        'entries': f_entries,
+        'compo': c,
+        'last_y': -i * step,
+        'last_rot_x': rot_x,
         'selected_event_id': int(sel_event_id),
     })
 
