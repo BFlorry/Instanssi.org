@@ -120,16 +120,14 @@ p.compothanks {
     background-repeat: no-repeat;
 }
 .slide-image-sizer {
-    width: 500px;
-    height: 500px;
+    width: 720px;
+    height: 720px;
     position: relative;
 }
 
-.step-image {
+.step.step-image {
     text-align: center;
-}
-.step-image img {
-    max-width: 100%;
+    padding: 0;
 }
 
 /* COMMON STEP STYLES */
